@@ -9,11 +9,25 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>^(.*\*/)?\s*\}([^}{"']*\{)?[;\s]*(//.*|/\*.*\*/\s*)?$|^\s*(public|private|protected):\s*$</string>
+		<string>(?x)
+	^(.*\*/)?\s*\}([^}{"']*\{)?[;\s]*(//.*|/\*.*\*/\s*)?$|^\s*(public|final|dynamic|internal):\s*$
+	</string>
 		<key>increaseIndentPattern</key>
-		<string>^.*\{[^}"']*$|^\s*(public|private|protected):\s*$</string>
+		<string>(?x)
+	    ^ .* \{ [^}"']* $
+	|   ^ \s* (public|private|protected): \s* $
+	|   ^ \s* \{ \} $
+	</string>
 		<key>indentNextLinePattern</key>
-		<string>^(?!(.*[};:])?\s*(//|/\*.*\*/\s*$)).*[^\s;:{}]\s*$</string>
+		<string>(?x)^
+	    (?! .* [;{}]                   # do not indent when line ends with ;, {, or }
+	        \s* (//|/[*] .* [*]/ \s* $) #  …account for potential trailing comment
+	    )
+	    .* [^\s;{}] \s* $              # indent next if this one isn’t
+	                                    #  terminated with ;, {, or }
+	</string>
+		<key>unIndentedLinePattern</key>
+		<string>^\s*((/\*|\*/|//|#|template\b.*?&gt;(?!\(.*\))|@protocol|@optional|@interface(?!.*\{)|@implementation|@end).*)?$</string>
 	</dict>
 	<key>uuid</key>
 	<string>8CB0A41D-2EEA-4CC9-B462-E0976C05ED00</string>
