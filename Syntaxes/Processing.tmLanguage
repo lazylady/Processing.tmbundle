@@ -92,47 +92,30 @@
 			<key>include</key>
 			<string>#class-body</string>
 		</dict>
-	</array>
-	<key>repository</key>
-	<dict>
-		<key>block</key>
 		<dict>
-			<key>begin</key>
-			<string>\{</string>
-			<key>beginCaptures</key>
+			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.block.begin.processing</string>
 				</dict>
-			</dict>
-			<key>contentName</key>
-			<string>meta.scope.block.processing</string>
-			<key>end</key>
-			<string>\}</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.block.end.processing</string>
 				</dict>
 			</dict>
+			<key>comment</key>
+			<string>Allows the special return snippet to fire.</string>
+			<key>match</key>
+			<string>(\{)(\})</string>
 			<key>name</key>
 			<string>meta.block.processing</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#block</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>source.c</string>
-				</dict>
-			</array>
 		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
 		<key>all-types</key>
 		<dict>
 			<key>patterns</key>
@@ -394,10 +377,6 @@
 					<string>#comments</string>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#block</string>
-				</dict>
-				<dict>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -493,10 +472,6 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#block</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#comments</string>
 				</dict>
 				<dict>
@@ -536,19 +511,6 @@
 				<dict>
 					<key>include</key>
 					<string>#class</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>{</string>
-					<key>end</key>
-					<string>}</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#code</string>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -951,10 +913,6 @@
 			<string>meta.method.processing</string>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>include</key>
-					<string>#block</string>
-				</dict>
 				<dict>
 					<key>include</key>
 					<string>#storage-modifiers</string>
