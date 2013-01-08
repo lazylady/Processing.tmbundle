@@ -2,68 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>beforeRunningCommand</key>
-  <string>saveModifiedFiles</string>
-  <key>command</key>
-  <string>#!/bin/bash
-if [ -z "$TM_FILEPATH" ]
-  then
-  TMP_NAME="processing_$$_temp"
-  TMP_DIR="${TMPDIR:-/tmp}$TMP_NAME"
-  TMP_PATH="$TMP_DIR/$TMP_NAME.pde"
-  mkdir "$TMP_DIR" &amp;&amp; cat &gt; "$TMP_PATH"
-  touch "$TMP_DIR/$TMP_NAME.log"
-  open -a "console.app" "$TMP_DIR/$TMP_NAME.log"
-  $TM_PROCESSING --force --sketch=$TMP_DIR --output=$TMP_DIR/build --run &gt; $TMP_DIR/$TMP_NAME.log 2&gt;&amp;1
-  rm -rf "$TMP_DIR"
-else
-  DIR=`basename "$TM_PROJECT_DIRECTORY"`
-  if [ -e "$DIR.pde" ]
-    then
-    touch $TM_PROJECT_DIRECTORY/$DIR.log
-    open -a "Console.app" "$TM_PROJECT_DIRECTORY/$DIR.log"
-    $TM_PROCESSING --force --sketch=$TM_PROJECT_DIRECTORY --output=$TM_PROJECT_DIRECTORY/build --run &gt; $TM_PROJECT_DIRECTORY/$DIR.log 2&gt;&amp;1
-    rm -rf $TM_PROJECT_DIRECTORY/build
-  else
-    echo "ERROR: $TM_PROJECT_DIRECTORY must contain a file named $DIR.pde"
-  fi
-fi
-  </string>
-  <key>input</key>
-  <string>document</string>
-  <key>inputFormat</key>
-  <string>text</string>
-  <key>keyEquivalent</key>
-  <string>@r</string>
-  <key>name</key>
-  <string>Run Sketch</string>
-  <key>outputCaret</key>
-  <string>afterOutput</string>
-  <key>outputFormat</key>
-  <string>text</string>
-  <key>outputLocation</key>
-  <string>toolTip</string>
-  <key>requiredCommands</key>
-  <array>
-    <dict>
-      <key>command</key>
-      <string>processing-java</string>
-      <key>locations</key>
-      <array>
-        <string>/usr/bin/processing-java</string>
-        <string>$HOME/processing-java</string>
-      </array>
-      <key>moreInfoURL</key>
-      <string>http://wiki.processing.org/w/Command_Line</string>
-      <key>variable</key>
-      <string>TM_PROCESSING</string>
-    </dict>
-  </array>
-  <key>scope</key>
-  <string>source.processing</string>
-  <key>uuid</key>
-  <string>87D057B4-233C-4B34-8680-647819E1E439</string>
-  <key>version</key>
-  <integer>2</integer>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+#   
+  require ENV['TM_BUNDLE_SUPPORT']+'/lib/run'
+  Run.new.buildSketch
+</string>
+	<key>input</key>
+	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>@r</string>
+	<key>name</key>
+	<string>Run Sketch</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>requiredCommands</key>
+	<string>moreInfoURL: http://wiki.processing.org/w/Command_Linecommandprocessing-javavariableTM_PROCESSINGlocations/usr/bin/processing-java$HOME/processing-java</string>
+	<key>scope</key>
+	<string>source.processing</string>
+	<key>uuid</key>
+	<string>87D057B4-233C-4B34-8680-647819E1E439</string>
+	<key>version</key>
+	<string>2</string>
 </dict>
 </plist>
