@@ -55,6 +55,7 @@ class Run
     end_time = Time.now
     puts "Sketch did end at #{end_time} and did run for a total of #{end_time - start_time} seconds."
     puts "</div>#{force_refresh}"
+    TextMate.exit_discard
     # Only works every other time
     # print "<script type='text/javascript' charset='utf-8'>
     # window.close();
