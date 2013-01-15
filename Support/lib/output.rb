@@ -35,7 +35,11 @@ class Output
     if match
       out << "<br/><div id='error'>"
       error = match[4]
-      error = error.first.capitalize
+      
+      if error
+        error = error.first.capitalize
+      end
+      
       out << error + ' <a title="Click to open ' + match[1] +
       '" href="txmt://open?url=file://' + project_path + "/" + match[1] + '&line=' + match[2] + '" >' + match[1] + '</a><br/>'
     else
