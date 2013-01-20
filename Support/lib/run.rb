@@ -29,6 +29,7 @@ class Run
       @folder_name = File.basename @project_path
     else
       @project_path = "/tmp/textmate-processing/TmpClass"
+      ENV['TM_PROJECT_DIRECTORY'] = @project_path
       FileUtils.mkdir_p @project_path unless File.directory? @project_path
       @folder_name = File.basename @project_path
       f = File.open("#{@project_path}/#{@folder_name}.pde", 'w')

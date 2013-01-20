@@ -5,7 +5,6 @@
 #  Formats Processing log to be used for Textmate HTML output
 #  Created by Ted Broberg on 2013-01-08.
 # 
-
 class Output
   
   def initialize
